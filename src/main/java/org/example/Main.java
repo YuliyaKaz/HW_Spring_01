@@ -1,5 +1,7 @@
 package org.example;
 
+import com.google.gson.Gson;
+
 public class Main {
     public static void main(String[] args) {
         Person person1 = new Person("Vasiliy", "Chapaev", 55);
@@ -13,5 +15,12 @@ public class Main {
         System.out.println("hash code for person1: " + person1.hashCode());
 
         System.out.println("hash code for person2: " + person2.hashCode());
+
+        Gson gson = new Gson();
+        String json1 = gson.toJson(person1);
+        System.out.println("Сгенерированный json: " + json1);
+        Person deserialJson = gson.fromJson(json1, Person.class);
+        System.out.println(deserialJson.toString());
+
     }
 }
